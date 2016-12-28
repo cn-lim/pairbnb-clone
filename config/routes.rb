@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'staticpages#home'
 
-  resources :users, controller: 'users', only: 'create'
+  resources :users
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
