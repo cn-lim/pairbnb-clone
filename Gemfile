@@ -6,8 +6,10 @@ gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass','~> 3.3.6'
+gem 'sass-rails', '>= 3.2'
 # Use Uglifier as compressor for JavaScript assets
+
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
@@ -26,6 +28,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'clearance'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# Used to protect privacy
+gem 'figaro'
+
+# Facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
