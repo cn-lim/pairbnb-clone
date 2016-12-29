@@ -36,6 +36,22 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Country code
+
+gem 'country_select'
+
+gem 'faker'
+
+gem 'filterrific'
+
+gem 'will_paginate'
+
+gem 'bootstrap-will_paginate'
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+gem 'rmagick'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'bookings/new'
+
+  get 'listings/new'
+
   get 'staticpages/new'
 
   root 'staticpages#home'
 
-  resources :users
-
+  resources :users, only: [:index, :show, :edit, :update]
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -20,6 +23,11 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+  resources :listings do 
+    resources :bookings, only: [:create]
+  end
+  resources :bookings, only: [:destroy]
 
   # get 'users/new'
 

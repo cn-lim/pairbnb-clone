@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228030756) do
+ActiveRecord::Schema.define(version: 20161229050727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,27 @@ ActiveRecord::Schema.define(version: 20161228030756) do
   end
 
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
+
+  create_table "bookings", force: :cascade do |t|
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string   "title",                           null: false
+    t.string   "description"
+    t.string   "address",                         null: false
+    t.string   "country_code",                    null: false
+    t.string   "room_type",                       null: false
+    t.integer  "num_of_room",                     null: false
+    t.integer  "max_guests",                      null: false
+    t.integer  "price",                           null: false
+    t.integer  "user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "verification_status", default: 0
+    t.json     "images"
+  end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                                      null: false
@@ -43,10 +64,12 @@ ActiveRecord::Schema.define(version: 20161228030756) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.string   "name"
+    t.integer  "role",                           default: 2
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "listings", "users"
 end

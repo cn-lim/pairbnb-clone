@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   include Clearance::User
 
   has_many :authentications, :dependent => :destroy
+  has_many :listings, :dependent => :destroy
+
+  enum role: {superadmin: 0 , moderator: 1, user: 2}
 
   before_save {self.email = email.downcase}
 
@@ -10,7 +13,7 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
- 
+
     user = User.create!(email: auth_hash["extra"]["raw_info"]["email"], first_name: auth_hash["extra"]["raw_info"]["first_name"], last_name: auth_hash["extra"]["raw_info"]["last_name"])
     user.authentications << (authentication)
     return user

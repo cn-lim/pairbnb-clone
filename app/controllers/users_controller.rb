@@ -1,6 +1,8 @@
 class UsersController < Clearance::UsersController
+    before_action :find_user, only: [:show, :edit, :update]
     
   def index
+    @user = User.all
   end
 
   def show
@@ -8,7 +10,7 @@ class UsersController < Clearance::UsersController
   end
 
   def new
-    @user = User.newx
+    @user = User.new
   end
 
   def create
@@ -21,6 +23,19 @@ class UsersController < Clearance::UsersController
     end
   end
 
+  def update
+    if @user.update(user_params)
+      flash[:success] = "User updated"
+      redirect_to @user
+    else
+      flash[:danger] = "Error"
+      render :edit
+    end
+  end
+
+  def find_user
+    @user = User.find(params[:id])
+  end
 
   private
 
