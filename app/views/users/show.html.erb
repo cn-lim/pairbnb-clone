@@ -1,0 +1,44 @@
+<h2 align="left">email: <%= @user.email %></h2>
+<%#= link_to "Edit", edit_user_path(@user) %>
+
+<h2 align="center">Your Trips</h2>
+<table class = "table table-bordered">
+  <thead>
+    
+    <th>Title</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Num Guests</th>
+    <th>Total Price</th>
+    <th>Date Booked</th>
+    <th>Actions</th>
+  
+   </thead>
+
+    <tbody>
+  <% @bookings.each do |booking| %>
+  
+      <th scope="row">
+      <%= link_to booking.listing.title, booking.listing %>
+      </th>
+      <th scope="row">
+      <%= booking.start_date.strftime('%d %B %Y') %>
+      </th>
+      <th scope="row">
+      <%= booking.end_date.strftime('%d %B %Y') %>
+      </th>
+      <th scope="row">
+      <%= booking.num_guests %>
+      </th>
+      <th scope="row">
+      <%= booking.total_price %>
+      </th>
+      <th scope="row">
+      <%= booking.created_at %>
+      </th>
+      <th scope="row">
+      <%= link_to "Cancel Booking", booking, method: :delete %>
+      </th>
+  <% end %>
+   </tbody>
+</table>

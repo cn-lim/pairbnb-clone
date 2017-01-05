@@ -15,7 +15,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 .navbar-inverse {
     background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
     border-color: rgb(29, 198, 213);
@@ -31,7 +30,9 @@
     color: rgba(157, 157, 157, 0.31);
 }
 
-
+.carousel-inner > .item > img {
+  min-width: 100%;
+}
 /* universal */
 
 body {
@@ -55,6 +56,12 @@ textarea {
   margin-bottom: 10px;
 }
 
+/* table */
+.table > thead > tbody {
+     vertical-align: middle;
+     text-align: center;
+}
+
 /* header */
 
 #logo {
@@ -68,9 +75,11 @@ textarea {
   font-weight: lighter;
 }
 
-a.dropdown-toggle {
+/*a.dropdown-toggle {
   background-color: rgba(0, 188, 212, 0.62);
-}
+}*/
+
+
 #logo:hover {
   color: #fff;
   text-decoration: none;
@@ -93,7 +102,6 @@ h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: lighter;
   color: #777;  
 }

@@ -1,5 +1,6 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
+  has_many :bookings
   enum verification_status: { "unverified": 0 , "verified": 1 }
   mount_uploaders :images, ImageUploader
 

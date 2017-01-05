@@ -45,6 +45,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.3)
     autoprefixer-rails (6.5.4)
       execjs
@@ -56,6 +58,8 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    braintree (2.69.1)
+      builder (>= 2.0.0)
     builder (3.2.2)
     byebug (9.0.6)
     clearance (1.15.1)
@@ -103,6 +107,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.6)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -135,6 +143,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.19.0)
+    public_suffix (2.0.5)
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -211,6 +220,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bootstrap-will_paginate
+  braintree
   byebug
   carrierwave!
   clearance
@@ -221,6 +231,7 @@ DEPENDENCIES
   filterrific
   jbuilder (~> 2.0)
   jquery-rails
+  letter_opener
   omniauth
   omniauth-facebook
   pg (~> 0.15)

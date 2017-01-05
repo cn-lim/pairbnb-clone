@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'braintree/new'
+
   get 'bookings/new'
+
+  get 'bookings/show'
 
   get 'listings/new'
 
@@ -8,26 +12,45 @@ Rails.application.routes.draw do
 
   root 'staticpages#home'
 
-  resources :users, only: [:index, :show, :edit, :update]
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
-  resources :users, controller: "clearance/users", only: [:create] do
+
+  resources :users, controller: "users", only: [:create] do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
 
+
+  resources :users, only: [:index, :show, :edit, :update]
+
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
-  get "/sign_up" => "clearance/users#new", as: "sign_up"
+  get "/sign_up" => "users#new", as: "sign_up"
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   resources :listings do 
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :show]
+  end
+
+   resources :listings do
+    resources :images, :only => [:create, :destroy]
   end
   resources :bookings, only: [:destroy]
+
+  get 'braintree/new' => 'braintree#new'
+  post 'braintree/new' => 'braintree#new'
+
+
+  post 'braintree/checkout' => 'braintree#checkout'
+
+  post "braintree/checkout" do
+  nonce_from_the_client = params[:payment_method_nonce]
+  # Use payment method nonce here...
+end
 
   # get 'users/new'
 

@@ -1,5 +1,13 @@
-<h1>Email: <%= @user.email %></h1>
-<h1>First Name: <%= @user.first_name %></h1>
-<h1>Last Name: <%= @user.last_name %></h1>
-<h1>Password: <%= @user.password %></h1>
-<%= link_to "Edit", edit_user_path(@user) %>
+<h2>Email: <%= @user.email %></h1>
+<h2>First Name: <%= @user.first_name %></h1>
+<h2>Last Name: <%= @user.last_name %></h1>
+
+  <%= form_for @user do |form| %>
+    
+    <%= render partial: '/users/form', object: form %>
+
+    <div class="submit-field" id="sign-up", remote: true>
+      <%= form.submit %>
+    </div>
+
+  <% end %>
